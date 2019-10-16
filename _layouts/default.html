@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include head.html %}
+    <title>{{site.title}}</title>
+    {% if page.url == "/404.html" %}
+    {% endif %}
+</head>
+<body>
+    {% if site.data.common.cda.announcement %}
+    <div class="header">
+        {{ site.data.common.cda.date }}
+    </div>
+    {% else %}
+        {{ content }}
+    {% endif %}
+
+    <!-- Scripts -->
+    {% include scripts.html %}
+</body>
+</html>

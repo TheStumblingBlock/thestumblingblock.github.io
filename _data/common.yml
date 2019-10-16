@@ -1,0 +1,4 @@
+# countdown to the announcement
+cda:
+  announcement: true
+  date: '19.10.2019'
