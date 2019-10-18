@@ -20,9 +20,3 @@ var x = setInterval(function() {
     document.getElementById("countdown").innerHTML = '';
   }
 }, 1000);
-
-function getServerTime() {
-  return $.ajax({async: false}).getResponseHeader( 'Date' );
-}
-console.log('Server Time: ', getServerTime());
-console.log('Locale Time: ', new Date(getServerTime()));
