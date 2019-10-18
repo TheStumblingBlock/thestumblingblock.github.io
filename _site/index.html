@@ -1,24 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html id="fade">
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta author="Alternative Visal Games">
+<meta author="Alternative Visual Games">
+
 <link rel="stylesheet" href="http://localhost:4000/assets/bootstrap-4/css/bootstrap.css">
 <link rel="stylesheet" href="http://localhost:4000/assets/bootstrap-4/css/bootstrap-grid.css">
 <link rel="stylesheet" href="http://localhost:4000/assets/bootstrap-4/css/bootstrap-reboot.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/style.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
     <title>Stumbling Block</title>
     
 </head>
 <body>
     
-    <div class="header">
-        19.10.2019
-    </div>
+        <div  class="container-cover">
+            <div class="bg-image"></div>
+            <div class="countdown d-flex flex-column justify-content-center m-0 text-center" id="scene" >
+                <div data-depth="0.1">The Stumbling Block</div>
+                <div data-depth="0.2" class="asize" id="countdown">00:00:00</div>
+            </div>
+        </div>
     
-
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene, {
+        relativeInput: true,
+        pointerEvents: true
+    });
+    window.onload = function(){
+        for(i = 0; i<scene.children.length; i++){
+            scene.children[i].style.position = null;
+        }
+    }
+</script>
+<script>
+    let dde = document.documentElement;
+    let value = 55, mx = 0, my = 0, lastposx = 0, lastposy = 0;
+    dde.addEventListener("mousemove", e => {
+        let ow = dde.offsetWidth; 
+        let oh = dde.offsetHeight;
+        lastposx = e.clientX * value / ow;
+        lastposy = e.clientY * value / oh; 
+    });
     
+    window.requestAnimationFrame(render);
+    function render (){
+        mx = lerp(mx, lastposx, 0.02);
+        my = lerp(my, lastposy, 0.02);
+        dde.style.setProperty('--mouseX', mx + "%");
+        dde.style.setProperty('--mouseY', my + "%");
+        window.requestAnimationFrame(render);
+    }
+    function lerp(a, b, n) {
+        return (1 - n) * a + n * b;
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+function fadeIn(el, time) {
+  el.style.opacity = 0;
+
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / time;
+    last = +new Date();
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+
+  tick();
+}
+
+var el = document.getElementById("fade");
+fadeIn(el, 5000);
+</script>
+<script src="http://localhost:4000/assets/js/countdown.js"></script>
+<script src="http://localhost:4000/assets/bootstrap-4/js/bootstrap.js"></script>
+<script src="http://localhost:4000/assets/bootstrap-4/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>
+

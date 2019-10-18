@@ -1,3 +1,59 @@
-<script src="/assets/bootstrap-4/js/bootstrap.js"></script>
-<script src="/assets/bootstrap-4/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene, {
+        relativeInput: true,
+        pointerEvents: true
+    });
+    window.onload = function(){
+        for(i = 0; i<scene.children.length; i++){
+            scene.children[i].style.position = null;
+        }
+    }
+</script>
+<script>
+    let dde = document.documentElement;
+    let value = 55, mx = 0, my = 0, lastposx = 0, lastposy = 0;
+    dde.addEventListener("mousemove", e => {
+        let ow = dde.offsetWidth; 
+        let oh = dde.offsetHeight;
+        lastposx = e.clientX * value / ow;
+        lastposy = e.clientY * value / oh; 
+    });
+    
+    window.requestAnimationFrame(render);
+    function render (){
+        mx = lerp(mx, lastposx, 0.02);
+        my = lerp(my, lastposy, 0.02);
+        dde.style.setProperty('--mouseX', mx + "%");
+        dde.style.setProperty('--mouseY', my + "%");
+        window.requestAnimationFrame(render);
+    }
+    function lerp(a, b, n) {
+        return (1 - n) * a + n * b;
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+function fadeIn(el, time) {
+  el.style.opacity = 0;
 
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / time;
+    last = +new Date();
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+
+  tick();
+}
+
+var el = document.getElementById("fade");
+fadeIn(el, 5000);
+</script>
+<script src="{{site.url}}/assets/js/countdown.js"></script>
+<script src="{{site.url}}/assets/bootstrap-4/js/bootstrap.js"></script>
+<script src="{{site.url}}/assets/bootstrap-4/js/bootstrap.bundle.js"></script>

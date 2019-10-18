@@ -1,1 +1,79 @@
- 
+@import url('https://fonts.googleapis.com/css?family=Jura&display=swap');
+
+/*
+font-family: 'Jura', sans-serif;
+*/
+
+:root {
+    --mouseX: 50%;
+    --mouseY: 50%;
+}
+
+html, body{
+    background-color: black;
+}
+
+.container-cover {
+    min-height: 100vh;
+    min-width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/images/background_blur.png);
+    background-position: var(--mouseX) var(--mouseY);
+    background-repeat: no-repeat;
+    background-size: auto 150%;
+}
+
+.countdown{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: 'Jura', sans-serif;
+    text-shadow:    2px     -1px    2px    rgba(255, 200, 0, 0.5),
+                    -2px    1px     2px    rgba(10, 200, 255, 0.5),
+                    4px     -1px    5px    rgba(255, 10, 10, 0.4),
+                    -4px    1px     5px    rgba(10, 50, 255, 0.4); 
+    color: white;
+    align-items: stretch;
+}
+
+.asize{
+    font-size: 3rem;  
+}
+.isize{
+    font-size: 3rem; 
+}
+
+
+@media (min-width: 480px) {
+    .asize{
+        font-size: 3.5rem;  
+    }
+}
+@media (min-width: 768px) {
+    .asize{
+        font-size: 5rem;  
+    }
+}
+@media (min-width: 1224px) {
+    .asize{
+        font-size: 6rem;  
+    }
+}
+@media (min-width: 1600px){
+    .asize{
+        font-size: 7rem;  
+    }
+}
+
+@keyframes glow {
+
+}

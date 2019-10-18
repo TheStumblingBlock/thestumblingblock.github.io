@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="fade">
 <head>
     {% include head.html %}
     <title>{{site.title}}</title>
@@ -8,14 +8,18 @@
 </head>
 <body>
     {% if site.data.common.cda.announcement %}
-    <div class="header">
-        Скоро: {{ site.data.common.cda.date }}
-    </div>
+        <div  class="container-cover">
+            <div class="bg-image"></div>
+            <div class="countdown d-flex flex-column justify-content-center m-0 text-center" id="scene" >
+                <div data-depth="0.1">The Stumbling Block</div>
+                <div data-depth="0.2" class="asize" id="countdown">00:00:00</div>
+            </div>
+        </div>
     {% else %}
         {{ content }}
     {% endif %}
-
     <!-- Scripts -->
     {% include scripts.html %}
 </body>
 </html>
+
