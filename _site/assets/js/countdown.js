@@ -1,35 +1,3 @@
-var xmlHttp;
-function srvTime(){
-    try {
-        //FF, Opera, Safari, Chrome
-        xmlHttp = new XMLHttpRequest();
-    }
-    catch (err1) {
-        //IE
-        try {
-            xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
-        }
-        catch (err2) {
-            try {
-                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-            }
-            catch (eerr3) {
-                //AJAX not supported, use CPU time.
-                alert("AJAX not supported");
-            }
-        }
-    }
-    xmlHttp.open('HEAD',window.location.href.toString(),false);
-    xmlHttp.setRequestHeader("Content-Type", "text/html");
-    xmlHttp.send('');
-    return xmlHttp.getResponseHeader("Date");
-}
-
-var st = srvTime();
-var date = new Date(st);
-
-
-
 var leadZero = function(n) {
     if (n < 10 && n >= 0)
         return '0' + n;
@@ -38,7 +6,7 @@ var leadZero = function(n) {
 }
 var countDownDate = new Date("Nov 19, 2019 00:00:00").getTime();
 var x = setInterval(function() {
-  var now = date;
+  var now = new Date().getTime();
   var distance = countDownDate - now;
   var hours = leadZero(Math.floor(distance / (1000 * 60 * 60)));
   var minutes = leadZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
@@ -52,3 +20,9 @@ var x = setInterval(function() {
     document.getElementById("countdown").innerHTML = '';
   }
 }, 1000);
+
+function getServerTime() {
+  return $.ajax({async: false}).getResponseHeader( 'Date' );
+}
+console.log('Server Time: ', getServerTime());
+console.log('Locale Time: ', new Date(getServerTime()));
