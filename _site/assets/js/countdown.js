@@ -37,10 +37,12 @@ var leadZero = function(n) {
 }
 var now = new Date(st);
 
-var countDownDate = new Date("Nov 19, 2019 00:00:00").getTime();
+ 
 var x = setInterval(function() {
+  var countDownDate = new Date(st);
   now -= -1000;
-  var distance = countDownDate - now + new Date(st).getTimezoneOffset() * 60 * 60;
+  countDownDate -= -new Date("Nov 19, 2019 00:00:00").getTime()/1000;
+  var distance = countDownDate - now;
   var hours = leadZero(Math.floor(distance / (1000 * 60 * 60)));
   var minutes = leadZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
   var seconds = leadZero(Math.floor((distance % (1000 * 60)) / 1000));
@@ -53,3 +55,19 @@ var x = setInterval(function() {
     document.getElementById("countdown").innerHTML = '';
   }
 }, 1000);
+
+function changeTimezone(date, ianatz) {
+
+  // suppose the date is 12:00 UTC
+  var invdate = new Date(date.toLocaleString('ru-RU', {
+    timeZone: ianatz
+  }));
+
+  // then invdate will be 07:00 in Toronto
+  // and the diff is 5 hours
+  var diff = date.getTime() - invdate.getTime();
+
+  // so 12:00 in Toronto is 17:00 UTC
+  return new Date(date.getTime() + diff);
+
+}
