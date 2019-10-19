@@ -40,9 +40,8 @@ var now = new Date(st);
 //kak zhe ono nas zaebalo
 //js dlya pedikov
 var x = setInterval(function() {
-  var countDownDate = new Date(st);
   now -= -1000;
-  countDownDate -= -new Date("Nov 19, 2019 00:00:00").getTime()/1000;
+  countDownDate = new Date("Nov 19, 2019 00:00:00 GMT+0300").getTime();
   var distance = countDownDate - now;
   var hours = leadZero(Math.floor(distance / (1000 * 60 * 60)));
   var minutes = leadZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
