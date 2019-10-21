@@ -63,8 +63,11 @@ html, body{
 
 .ok {
     opacity: 0;
-    visibility: hidden;
-    transition: 5s all ease-out;
+    -webkit-transition: opacity 5s ease-out;
+    -moz-transition: opacity 5s ease-out;
+    -ms-transition: opacity 5s ease-out;
+    -o-transition: opacity 5s ease-out;
+    transition: opacity 5s ease-out;
 }
 
 .preloader .loader{
@@ -74,7 +77,7 @@ html, body{
                     -2px    1px     2px    rgba(10, 200, 255, 0.5),
                     4px     -1px    5px    rgba(255, 10, 10, 0.4),
                     -4px    1px     5px    rgba(10, 50, 255, 0.4); 
-    transition: 0.5s all ease-out;
+    transition: 0.5s ease-out;
 }
 .preloader .loader span::after{
     content: '.';
