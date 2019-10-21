@@ -11,6 +11,11 @@ font-family: 'Jura', sans-serif;
 
 html, body{
     background-color: black;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
 .container-cover {
@@ -26,7 +31,7 @@ html, body{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(/assets/images/background_blur.png);
+    background-image: url(/assets/images/background_blur.jpg);
     background-position: var(--mouseX) var(--mouseY);
     background-repeat: no-repeat;
     background-size: auto 150%;
@@ -45,13 +50,43 @@ html, body{
     align-items: stretch;
 }
 
+.preloader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,1);
+    z-index: 999;
+    overflow: hidden;
+}
+
+.ok {
+    opacity: 0;
+    visibility: hidden;
+    transition: 5s all ease-out;
+}
+
+.preloader .loader{
+    color: #fff;
+    font-family: 'Jura', sans-serif;
+    text-shadow:    2px     -1px    2px    rgba(255, 200, 0, 0.5),
+                    -2px    1px     2px    rgba(10, 200, 255, 0.5),
+                    4px     -1px    5px    rgba(255, 10, 10, 0.4),
+                    -4px    1px     5px    rgba(10, 50, 255, 0.4); 
+    transition: 0.5s all ease-out;
+}
+.preloader .loader span::after{
+    content: '.';
+    animation: dots 2s linear infinite;
+}
+
 .asize{
     font-size: 3rem;  
 }
 .isize{
-    font-size: 3rem; 
+    font-size: 1rem; 
 }
-
 
 @media (min-width: 480px) {
     .asize{
@@ -76,4 +111,19 @@ html, body{
 
 @keyframes glow {
 
+}
+
+@keyframes dots {
+    0%, 20% {
+      content: ".";
+    }
+    40% {
+      content: "..";
+    }
+    60% {
+      content: "...";
+    }
+    90%, 100% {
+      content: "";
+    }
 }
