@@ -63,7 +63,7 @@ var now = new Date(st);
 //js dlya pedikov
 var x = setInterval(function() {
   now -= -1000;
-  countDownDate = new Date("Dec 3, 2019 00:00:00 GMT+0300").getTime(); //initially - nov 19, transfer to 3 dec :(
+  countDownDate = new Date("Dec 3, 2019 12:00:00 GMT+0300").getTime(); //initially - nov 19, transfer to 3 dec :( //12 pm
   var distance = countDownDate - now;
   var hours = leadZero(Math.floor(distance / (1000 * 60 * 60)));
   var minutes = leadZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
