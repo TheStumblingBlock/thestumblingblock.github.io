@@ -68,6 +68,7 @@ html, body{
     -ms-transition: opacity 5s ease-out;
     -o-transition: opacity 5s ease-out;
     transition: opacity 5s ease-out;
+    pointer-events: none;
 }
 
 .preloader .loader{
