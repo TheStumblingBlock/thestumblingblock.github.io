@@ -1,3 +1,6 @@
+var video = document.getElementById("amb1");
+video.volume = 0.3; 
+
 /* --- Parallax background --- */
 let dde = document.documentElement;
 let value = 55, mx = 0, my = 0, lastposx = 0, lastposy = 0;
