@@ -59,8 +59,7 @@ var leadZero = function(n) {
 }
 var now = new Date(st);
 
-//kak zhe ono nas zaebalo
-//js dlya pedikov
+// done fix on timer
 var x = setInterval(function() {
   now -= -1000;
   countDownDate = new Date("Dec 3, 2019 12:00:00 GMT+0300").getTime(); //initially - nov 19, transfer to 3 dec :( //12 pm
